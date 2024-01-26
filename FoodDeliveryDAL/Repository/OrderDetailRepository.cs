@@ -33,7 +33,7 @@ namespace FoodDeliveryDAL.Repository
         {
             var orderDetail = _context.OrderDetails
                   .FirstOrDefault(od => od.OrderId == orderId);
-            return orderDetail.OrderStatus != null ? orderDetail.OrderStatus : 0;
+            return orderDetail.OrderStatus;
         }
 
         public IEnumerable<OrderDetail> GetAllOrderDetails()

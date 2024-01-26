@@ -126,7 +126,12 @@
             <li class=" product-link "><img src="https://cdn-icons-png.flaticon.com/128/4715/4715128.png" alt="All Category" class="icon"> @Html.ActionLink("All Category", "Index", "Category", new { AdminId = userId }, null)</li>
             <li class="divider"></li>
             <li class=" product-link "><img src="https://cdn-icons-png.flaticon.com/128/9653/9653980.png" alt="View Profile Icon" class="icon"> @Html.ActionLink("View Profile", "ViewProfile", "Admin", new { AdminId = userId }, null)</li>
-        </ul>
+            <li class="divider"></li>
+            <li class=" product-link ">
+                <img src="https://cdn-icons-png.flaticon.com/128/9653/9653980.png" alt="View Profile Icon" class="icon">
+                @Html.ActionLink("Manage Order", "IncompleteOrders", "Order")
+
+</ul>
     </div>
 
 
@@ -136,8 +141,6 @@
 
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-
-                    @*<li>@Html.ActionLink("Home", "Index", "Account", new { area = "" }, new { @class = "nav-link" })</li>*@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Registration", "Registration", "Account", new { area = "" }, new { @class = "nav-link" })</li>
