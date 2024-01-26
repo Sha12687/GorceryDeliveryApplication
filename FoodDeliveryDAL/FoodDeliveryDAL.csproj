@@ -112,6 +112,7 @@
     <Compile Include="Category.cs" />
     <Compile Include="Cutomer.cs" />
     <Compile Include="Data\FoodDbContext.cs" />
+    <Compile Include="DeliveryStatus.cs" />
     <Compile Include="Interface\IAddressRepository.cs" />
     <Compile Include="Interface\IAdminRepository.cs" />
     <Compile Include="Interface\ICartRepository.cs" />
@@ -180,6 +181,10 @@
     <Compile Include="Migrations\202312310830416_productTableValidation.designer.cs">
       <DependentUpon>202312310830416_productTableValidation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401251731266_DeliveryStatus.cs" />
+    <Compile Include="Migrations\202401251731266_DeliveryStatus.designer.cs">
+      <DependentUpon>202401251731266_DeliveryStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetail.cs" />
@@ -245,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312310830416_productTableValidation.resx">
       <DependentUpon>202312310830416_productTableValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401251731266_DeliveryStatus.resx">
+      <DependentUpon>202401251731266_DeliveryStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

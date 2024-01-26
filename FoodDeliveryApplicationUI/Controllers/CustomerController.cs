@@ -296,6 +296,7 @@ namespace FoodDeliveryApplicationUI.Controllers
             {
                 OrderId = order.OrderId,
                 TotalAmount = order.TotalAmount,
+                OrderDate = order.OrderDate,
             };
 
           
