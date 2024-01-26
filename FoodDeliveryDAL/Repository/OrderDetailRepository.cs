@@ -29,6 +29,11 @@ namespace FoodDeliveryDAL.Repository
             return _context.OrderDetails.Find(orderDetailId);
         }
 
+        public List<OrderDetail> GetOrderDetailsByOrderId(int orderId)
+        {
+            return _context.OrderDetails.Where(od=>od.OrderId==orderId).ToList();
+        }
+
         public int GetOrderDetailByOrderId(int orderId)
         {
             var orderDetail = _context.OrderDetails
@@ -46,6 +51,7 @@ namespace FoodDeliveryDAL.Repository
             _context.Entry(orderDetail).State = EntityState.Modified;
             _context.SaveChanges();
         }
+
 
         public void DeleteOrderDetail(OrderDetail orderDetail)
         {
