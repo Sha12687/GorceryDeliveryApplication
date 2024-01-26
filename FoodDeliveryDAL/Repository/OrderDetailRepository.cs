@@ -29,6 +29,13 @@ namespace FoodDeliveryDAL.Repository
             return _context.OrderDetails.Find(orderDetailId);
         }
 
+        public int GetOrderDetailByOrderId(int orderId)
+        {
+            var orderDetail = _context.OrderDetails
+                  .FirstOrDefault(od => od.OrderId == orderId);
+            return orderDetail.OrderStatus != null ? orderDetail.OrderStatus : 0;
+        }
+
         public IEnumerable<OrderDetail> GetAllOrderDetails()
         {
             return _context.OrderDetails.ToList();

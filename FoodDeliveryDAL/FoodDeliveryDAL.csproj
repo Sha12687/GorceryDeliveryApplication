@@ -185,6 +185,10 @@
     <Compile Include="Migrations\202401251731266_DeliveryStatus.designer.cs">
       <DependentUpon>202401251731266_DeliveryStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401261039297_addOrderStatusToOrderDetails.cs" />
+    <Compile Include="Migrations\202401261039297_addOrderStatusToOrderDetails.designer.cs">
+      <DependentUpon>202401261039297_addOrderStatusToOrderDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetail.cs" />
@@ -253,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202401251731266_DeliveryStatus.resx">
       <DependentUpon>202401251731266_DeliveryStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401261039297_addOrderStatusToOrderDetails.resx">
+      <DependentUpon>202401261039297_addOrderStatusToOrderDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

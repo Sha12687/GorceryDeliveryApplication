@@ -13,5 +13,6 @@ namespace FoodDeliveryApplicationUI.Models
         public decimal Price { get; set; }
         public decimal Subtotal { get; set; }
         public int ProductId { get; set; }
+        public int OrderStatus { get; set; }
     }
 }

@@ -5,7 +5,7 @@
 }
 <div class="container">
     <!-- Animated Progress Bar -->
-    <div class="position-relative" id="horizontal-line"  style="width: 10%; height: 10px; background-color: #00ffe0; top: 16.5px; border-radius: 5px">
+    <div class="position-relative" id="horizontal-line" style="width: 10%; height: 10px; background-color: #00ffe0; top: 16.5px; border-radius: 5px">
     </div>
     <div class="animated-progress progress-blue w-75">
 
@@ -42,10 +42,33 @@
 </div>
 @section Scripts {
     <script>
-        //.2
-        // 1.1
-        // 2
-        // 3.1
-        animateHorizontalLine(1.1);
+    // Get the order status code from the model
+    var statusCode = @Model.orderStatus;
+
+    // Define the variable to hold the width value
+    var widthValue = 0;
+
+    // Set the width value based on the order status code
+    switch (statusCode) {
+        case 3:
+            widthValue = 2;
+            break;
+        case 2:
+            widthValue = 1.1;
+            break;
+        case 4:
+            widthValue = 3.1;
+            break;
+        case 1:
+            widthValue = 0.2;
+            break;
+        default:
+            widthValue = 0;
+            break;
+    }
+
+    // Call the animateHorizontalLine function with the widthValue
+    animateHorizontalLine(widthValue);
     </script>
+
 }

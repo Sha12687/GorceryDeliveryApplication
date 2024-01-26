@@ -16,5 +16,6 @@ namespace FoodDeliveryApplicationUI.Models
         public decimal TotalAmount { get; set; }
         public List<OrderDetailsViewModel> OrderDetails { get; set; }
         public List<AddressViewModel> Addresses { get; set; }
+        public int orderStatus { get; set; }
     }
 }
