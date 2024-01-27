@@ -29,6 +29,18 @@ namespace FoodDeliveryDAL.Repository
             return _context.OrderDetails.Find(orderDetailId);
         }
 
+        public List<OrderDetail> GetOrderDetailsByOrderId(int orderId)
+        {
+            return _context.OrderDetails.Where(od=>od.OrderId==orderId).ToList();
+        }
+
+        public int GetOrderDetailByOrderId(int orderId)
+        {
+            var orderDetail = _context.OrderDetails
+                  .FirstOrDefault(od => od.OrderId == orderId);
+            return orderDetail.OrderStatus;
+        }
+
         public IEnumerable<OrderDetail> GetAllOrderDetails()
         {
             return _context.OrderDetails.ToList();
@@ -40,11 +52,48 @@ namespace FoodDeliveryDAL.Repository
             _context.SaveChanges();
         }
 
+
         public void DeleteOrderDetail(OrderDetail orderDetail)
         {
             _context.OrderDetails.Remove(orderDetail);
             _context.SaveChanges();
         }
-    }
 
+        public bool UpdateOrderStatus(int orderId, int status)
+        {
+            try
+            {
+                // Get all order details with the specified orderId
+                List<OrderDetail> orderDetails = _context.OrderDetails.Where(od => od.OrderId == orderId).ToList();
+
+                if (orderDetails.Any())
+                {
+                    // Update the OrderStatus for each order detail
+                    foreach (var orderDetail in orderDetails)
+                    {
+                        orderDetail.OrderStatus = status;
+                    }
+
+                    // Save changes to the database
+                    _context.SaveChanges();
+
+                    // Return true indicating the update was successful
+                    return true;
+                }
+                else
+                {
+                    // No order details found with the specified orderId
+                    Console.WriteLine("No order details found for the specified orderId.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                Console.WriteLine($"Error updating order status: {ex.Message}");
+                return false;
+            }
+        }
+    }
 }
+

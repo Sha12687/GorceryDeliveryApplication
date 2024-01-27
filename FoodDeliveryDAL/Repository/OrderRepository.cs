@@ -65,6 +65,26 @@ namespace FoodDeliveryDAL.Repository
             return orders;
         }
 
-       
+        public IEnumerable<Order> GetIncompleteOrders()
+        {
+            IEnumerable<Order> orders = _context.Orders
+                .Include(o => o.OrderDetails)
+                .Where(o => o.OrderDetails.Any(od => od.OrderStatus < 4))
+                .ToList();
+            // Selecting only one OrderDetail per OrderId
+            foreach (var order in orders)
+            {
+                // Filter and assign only one OrderDetail per OrderId
+                order.OrderDetails = order.OrderDetails
+                    .Where(od => od.OrderStatus < 4)
+                    .GroupBy(od => od.OrderId)
+                    .Select(g => g.First())
+                    .ToList();
+            }
+            return orders;
+        }
+
+
+
     }
 }

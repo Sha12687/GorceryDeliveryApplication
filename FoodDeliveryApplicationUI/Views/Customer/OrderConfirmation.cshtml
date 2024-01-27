@@ -3,9 +3,72 @@
 @{
     ViewBag.Title = "Order Confirmation";
 }
-
 <div class="container">
-    <h3>Order Confirmation</h3>
-    <p>Your order with Order ID @Model.OrderId has been successfully placed.</p>
-    <p>Total Amount: @Model.TotalAmount</p>
+    <!-- Animated Progress Bar -->
+    <div class="position-relative" id="horizontal-line" style="width: 10%; height: 10px; background-color: #00ffe0; top: 16.5px; border-radius: 5px">
+    </div>
+    <div class="animated-progress progress-blue w-75">
+
+        <div class="progress-step">
+
+            <i class="fas fa-circle"></i>
+            <span>Order Preparing</span>
+        </div>
+        <div class="progress-step">
+            <i class="fas fa-circle"></i>
+            <span>Order Packing</span>
+        </div>
+        <div class="progress-step">
+            <i class="fas fa-circle"></i>
+            <span>Out for Delivery</span>
+        </div>
+        <div class="progress-step">
+            <i class="fas fa-circle"></i>
+            <span>Delivered</span>
+        </div>
+    </div>
+
 </div>
+
+<div class="container d-flex flex-column mt-5 w-50 border border-dark p-4" style="background-color: #ede2e57d">
+    <h3 class="text-center">Order Confirmation</h3>
+    <p class="ms-3 mb-0">Your order with Order ID @Model.OrderId has been successfully placed.</p>
+    <p class="ms-3 mb-0">Total Amount: @Model.TotalAmount</p>
+    <p class="ms-3 mb-0">
+        Order Date: @Model.OrderDate.ToString("dd-MM-yyyy")<br>
+        Order Time: @Model.OrderDate.ToString("HH:mm")
+    </p>
+
+</div>
+@section Scripts {
+    <script>
+    // Get the order status code from the model
+    var statusCode = @Model.orderStatus;
+
+    // Define the variable to hold the width value
+    var widthValue = 0;
+
+    // Set the width value based on the order status code
+    switch (statusCode) {
+        case 3:
+            widthValue = 2;
+            break;
+        case 2:
+            widthValue = 1.1;
+            break;
+        case 4:
+            widthValue = 3.1;
+            break;
+        case 1:
+            widthValue = 0.2;
+            break;
+        default:
+            widthValue = 0;
+            break;
+    }
+
+    // Call the animateHorizontalLine function with the widthValue
+    animateHorizontalLine(widthValue);
+    </script>
+
+}

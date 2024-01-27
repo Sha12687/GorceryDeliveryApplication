@@ -15,6 +15,7 @@ namespace FoodDeliveryDAL.Interface
         void UpdateOrder(Order order);
         void DeleteOrder(Order order);
         IEnumerable<Order> GetOrdersByCustomerId(int userId);
+        IEnumerable<Order> GetIncompleteOrders();
     }
 
 

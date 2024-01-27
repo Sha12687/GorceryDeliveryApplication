@@ -13,6 +13,9 @@ namespace FoodDeliveryDAL.Interface
         IEnumerable<OrderDetail> GetAllOrderDetails();
         void UpdateOrderDetail(OrderDetail orderDetail);
         void DeleteOrderDetail(OrderDetail orderDetail);
+        int GetOrderDetailByOrderId(int orderId);
+        List<OrderDetail> GetOrderDetailsByOrderId(int orderId);
+        bool UpdateOrderStatus(int orderId, int status);
     }
 
 }

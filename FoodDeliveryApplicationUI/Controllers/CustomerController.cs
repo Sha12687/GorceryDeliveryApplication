@@ -21,9 +21,10 @@ namespace FoodDeliveryApplicationUI.Controllers
         private readonly IOrderRepository orderRepository;
         private readonly IAddressRepository addressRepository;
         private readonly ICategory _categoryRepository;
+        private readonly IOrderDetailRepository orderDetailRepository;
 
         public CustomerController(ICustomerRepository customerRepository, IProductRepository productRepository, ICartRepository cartRepository, IOrderRepository orderRepository ,IAddressRepository addressRepository 
-            ,ICategory category)
+            ,ICategory category,IOrderDetailRepository orderDetailRepository)
         {
             //   _context = new FoodDbContext();
             this.customerRepository = customerRepository;
@@ -32,6 +33,7 @@ namespace FoodDeliveryApplicationUI.Controllers
             this.orderRepository = orderRepository;
             this.addressRepository = addressRepository;
             this._categoryRepository = category;
+            this.orderDetailRepository = orderDetailRepository;
         }
         // GET: Customer
         public ActionResult Index()
@@ -227,6 +229,7 @@ namespace FoodDeliveryApplicationUI.Controllers
                     UserName = customer.UserName,
                     OrderDate = DateTime.Now,
                     Addresses = addressModel,
+                    
                     OrderDetails = cartItems.Select(item => new OrderDetailsViewModel
                     {
                         
@@ -235,6 +238,7 @@ namespace FoodDeliveryApplicationUI.Controllers
                         Price = item.Price,
                         Subtotal = item.Quantity * item.Price,
                         ProductId = item.ProductId,
+                       
                     }).ToList()
                 };
                 decimal total = cartItems.Sum(item => item.Quantity * item.Price);
@@ -264,7 +268,8 @@ namespace FoodDeliveryApplicationUI.Controllers
                 {
                     ProductName = item.ProductName,
                     price = item.Price,
-                    Quantity = item.Quantity
+                    Quantity = item.Quantity,
+                    OrderStatus=1,
                 }).ToList()
             };
 
@@ -292,10 +297,14 @@ namespace FoodDeliveryApplicationUI.Controllers
         public ActionResult OrderConfirmation(int orderId)
         {  
             var order = orderRepository.GetOrderById(orderId);
+           var temp= orderDetailRepository.GetOrderDetailByOrderId(order.OrderId);
+
             var message = new OrderViewModel
             {
                 OrderId = order.OrderId,
                 TotalAmount = order.TotalAmount,
+                OrderDate = order.OrderDate,
+                orderStatus=temp,
             };
 
           
@@ -423,6 +432,11 @@ namespace FoodDeliveryApplicationUI.Controllers
 
 
             return RedirectToAction("ViewCart", "Customer", new { customerId = userId });
+        }
+
+        public ActionResult GetOrderStatus()
+        {
+            return View();
         }
     }
 }

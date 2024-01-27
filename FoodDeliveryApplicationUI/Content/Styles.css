@@ -116,3 +116,26 @@ footer {
     box-shadow: 2px 2px 7px gray;
     cursor: pointer;
 }
+
+
+.animated-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress-step {
+    text-align: center;
+}
+
+    .progress-step i {
+        font-size: 20px;
+        color: #29feebe0; /* Change color as needed */
+    }
+
+    .progress-step span {
+        display: block;
+        font-size: 12px;
+        color: #333; /* Change color as needed */
+        margin-top: 5px;
+    }
