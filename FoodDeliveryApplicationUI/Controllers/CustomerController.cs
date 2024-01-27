@@ -433,5 +433,10 @@ namespace FoodDeliveryApplicationUI.Controllers
 
             return RedirectToAction("ViewCart", "Customer", new { customerId = userId });
         }
+
+        public ActionResult GetOrderStatus()
+        {
+            return View();
+        }
     }
 }

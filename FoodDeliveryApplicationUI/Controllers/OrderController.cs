@@ -52,12 +52,16 @@ namespace FoodDeliveryApplicationUI.Controllers
         [HttpPost]
         public ActionResult UpdateOrderStatus(int orderId, int status)
         {
-            // Your logic to update the order status based on the orderId and status parameter
-            // For example:
-            // OrderService.UpdateOrderStatus(orderId, status);
-
-            // Redirect to a different action or return a view
-            return RedirectToAction("InCompleteOrders", "Order"); // Redirect to the home page, change it according to your application flow
+           bool result=orderDetailRepository.UpdateOrderStatus(orderId, status);
+            if(result) {
+                return RedirectToAction("InCompleteOrders", "Order");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Failed to update order status.");
+                return View(); // Return to the same view
+            }
+            // Redirect to the home page, change it according to your application flow
         }
     }
 }

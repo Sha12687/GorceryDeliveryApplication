@@ -58,6 +58,42 @@ namespace FoodDeliveryDAL.Repository
             _context.OrderDetails.Remove(orderDetail);
             _context.SaveChanges();
         }
-    }
 
+        public bool UpdateOrderStatus(int orderId, int status)
+        {
+            try
+            {
+                // Get all order details with the specified orderId
+                List<OrderDetail> orderDetails = _context.OrderDetails.Where(od => od.OrderId == orderId).ToList();
+
+                if (orderDetails.Any())
+                {
+                    // Update the OrderStatus for each order detail
+                    foreach (var orderDetail in orderDetails)
+                    {
+                        orderDetail.OrderStatus = status;
+                    }
+
+                    // Save changes to the database
+                    _context.SaveChanges();
+
+                    // Return true indicating the update was successful
+                    return true;
+                }
+                else
+                {
+                    // No order details found with the specified orderId
+                    Console.WriteLine("No order details found for the specified orderId.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                Console.WriteLine($"Error updating order status: {ex.Message}");
+                return false;
+            }
+        }
+    }
 }
+
