@@ -1,3 +1,18 @@
+# Grocery Delivery Application
+
+The **Grocery Delivery Application** is a robust system catering to two types of users: **customers** and **admins**.
+
+## Customer Features:
+- **Browse Products**: View available products by category.
+- **Add to Cart**: Select products and add them to a shopping cart.
+- **Order Tracking**: Track the status of placed orders.
+- **Profile Management**: Update personal details for a customized experience.
+
+## Admin Features:
+- Manage product inventory, orders, and customer data.
+
+This project implements a seamless user experience for efficient grocery shopping and delivery.
+
 # ASP.NET Framework Project Setup
 
 Follow these steps to clone the ASP.NET Framework repository and set up the project using a Code-First approach.
@@ -48,4 +63,12 @@ If you encounter the error "Could not find a part of the path ... bin\roslyn\csc
 
    ```bash
    Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
+
+## Here are some snippet of User interfaces
+![image](https://github.com/user-attachments/assets/54db88e6-18c8-4924-90e4-bbfd726603de)
+![image](https://github.com/user-attachments/assets/b350e95e-210b-44c3-afff-9b4dce4a8849)
+![image](https://github.com/user-attachments/assets/3e35b7b1-dd83-4195-8c7a-fcb0d006fd9b)
+![image](https://github.com/user-attachments/assets/ad0b5cd8-fcd8-423a-b30b-fb3ca4e30dc2)
+![image](https://github.com/user-attachments/assets/ad7661d5-772f-42e4-8f13-d54911caeac7)
+![image](https://github.com/user-attachments/assets/03f3e2fa-d412-4dcf-ba2d-a337770054b9)
 
